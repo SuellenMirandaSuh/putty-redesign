@@ -1,0 +1,317 @@
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import { Lock, Key, AlertCircle } from "lucide-react";
+import { useState } from "react";
+
+interface KeyInfo {
+  name: string;
+  type: string;
+  keyId: string;
+  fingerprint: string;
+  description: string;
+}
+
+interface KeySet {
+  year: string;
+  keys: KeyInfo[];
+}
+
+const currentKeys: KeyInfo[] = [
+  {
+    name: "Master Key",
+    type: "RSA, 4096-bit",
+    keyId: "B15D9EFC216B06A1",
+    fingerprint: "28D4 7C46 55E7 65A6 D827 AC66 B15D 9EFC 216B 06A1",
+    description: "Used to tie all other keys into the GPG web of trust",
+  },
+  {
+    name: "Release Key",
+    type: "RSA, 3072-bit",
+    keyId: "1993D21BCAD1AA77",
+    fingerprint: "F412 BA3A A30F DC0E 77B4 E387 1993 D21B CAD1 AA77",
+    description: "Used to sign manually released versions of PuTTY",
+  },
+  {
+    name: "Snapshot Key",
+    type: "RSA, 3072-bit",
+    keyId: "10625E553F53FAAD",
+    fingerprint: "74CC 6DD9 ABA7 31D4 C5A0 C2D0 1062 5E55 3F53 FAAD",
+    description: "Used to sign routine development builds and snapshots",
+  },
+  {
+    name: "Secure Contact Key",
+    type: "RSA, 3072-bit",
+    keyId: "1559F6A8929F5EFC",
+    fingerprint: "01F5 A2B1 1388 D64B 707F 897F 1559 F6A8 929F 5EFC",
+    description: "For sending confidential messages to the PuTTY team",
+  },
+];
+
+const keyHistory: KeySet[] = [
+  {
+    year: "2023 (Current)",
+    keys: currentKeys,
+  },
+  {
+    year: "2021",
+    keys: [
+      {
+        name: "Master Key",
+        type: "RSA, 3072-bit",
+        keyId: "DD4355EAAC1119DE",
+        fingerprint: "A872 D42F 1660 890F 0E05 223E DD43 55EA AC11 19DE",
+        description: "Previous master key",
+      },
+      {
+        name: "Release Key",
+        type: "RSA, 3072-bit",
+        keyId: "E4F83EA2AA4915EC",
+        fingerprint: "2CF6 134B D3F7 7A65 88EB D668 E4F8 3EA2 AA49 15EC",
+        description: "Previous release key",
+      },
+    ],
+  },
+];
+
+export default function Keys() {
+  const [expandedYear, setExpandedYear] = useState<string>("2023 (Current)");
+
+  return (
+    <div className="min-h-screen flex flex-col bg-background">
+      <Header />
+
+      <main className="flex-1">
+        {/* Hero Section */}
+        <section className="bg-gradient-to-b from-primary/5 to-transparent py-12 md:py-16">
+          <div className="container">
+            <div className="max-w-3xl">
+              <h1 className="heading-display mb-4 text-foreground">
+                PuTTY Download Keys
+              </h1>
+              <p className="text-lg text-muted-foreground">
+                GPG signatures and key information for verifying PuTTY downloads
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Main Content */}
+        <div className="container py-12">
+          <div className="max-w-4xl space-y-12">
+            {/* Overview */}
+            <section>
+              <h2 className="heading-lg mb-6 text-foreground flex items-center gap-3">
+                <Lock className="w-8 h-8 text-primary" />
+                About PuTTY Signatures
+              </h2>
+              <div className="bg-card border border-border rounded-lg p-6 space-y-4">
+                <p className="text-body text-foreground">
+                  We create GPG signatures for all PuTTY files distributed from our website, so that users can be confident that the files have not been tampered with. As of release 0.58, all PuTTY executables contain fingerprint material that can be accessed via the <code className="bg-muted px-2 py-1 rounded text-small">-pgpfp</code> command-line option.
+                </p>
+                <p className="text-body text-foreground">
+                  As of release 0.67, Windows executables and installers also contain built-in signatures that are automatically verified by Windows' own mechanism (Authenticode).
+                </p>
+              </div>
+            </section>
+
+            {/* Current Keys */}
+            <section>
+              <h2 className="heading-lg mb-6 text-foreground flex items-center gap-3">
+                <Key className="w-8 h-8 text-primary" />
+                Current Keys (2023)
+              </h2>
+
+              <div className="space-y-4">
+                {currentKeys.map((key) => (
+                  <div
+                    key={key.keyId}
+                    className="bg-card border border-border rounded-lg p-6 space-y-3"
+                  >
+                    <div>
+                      <h3 className="heading-sm text-foreground mb-1">
+                        {key.name}
+                      </h3>
+                      <p className="text-small text-muted-foreground">
+                        {key.description}
+                      </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-small">
+                      <div>
+                        <p className="text-muted-foreground font-semibold mb-1">
+                          Type
+                        </p>
+                        <p className="text-foreground font-mono">{key.type}</p>
+                      </div>
+                      <div>
+                        <p className="text-muted-foreground font-semibold mb-1">
+                          Key ID
+                        </p>
+                        <p className="text-foreground font-mono">{key.keyId}</p>
+                      </div>
+                    </div>
+
+                    <div>
+                      <p className="text-muted-foreground font-semibold mb-1 text-small">
+                        Fingerprint
+                      </p>
+                      <p className="text-foreground font-mono text-small bg-muted p-3 rounded break-all">
+                        {key.fingerprint}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Security Details */}
+            <section>
+              <h2 className="heading-lg mb-6 text-foreground flex items-center gap-3">
+                <AlertCircle className="w-8 h-8 text-primary" />
+                Security Details
+              </h2>
+
+              <div className="space-y-6">
+                <div className="bg-card border border-border rounded-lg p-6">
+                  <h3 className="heading-sm text-foreground mb-4">
+                    Development Snapshots Key
+                  </h3>
+                  <p className="text-body text-foreground mb-3">
+                    The private key is stored <strong>without a passphrase</strong> because snapshots are generated nightly without human intervention.
+                  </p>
+                  <div className="bg-muted rounded-lg p-4 space-y-2">
+                    <p className="text-small text-foreground font-semibold">
+                      Protects against:
+                    </p>
+                    <ul className="text-small text-foreground space-y-1">
+                      <li>• Tampering with binaries between website and you</li>
+                      <li>• Web server maintainers tampering with binaries</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="bg-card border border-border rounded-lg p-6">
+                  <h3 className="heading-sm text-foreground mb-4">
+                    Release Key
+                  </h3>
+                  <p className="text-body text-foreground mb-3">
+                    The private key is kept <strong>encrypted</strong> on developers' local machines, providing stronger security than the snapshot key.
+                  </p>
+                  <div className="bg-muted rounded-lg p-4">
+                    <p className="text-small text-foreground">
+                      Only used at release time to manually sign each release.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="bg-card border border-border rounded-lg p-6">
+                  <h3 className="heading-sm text-foreground mb-4">
+                    Master Key
+                  </h3>
+                  <p className="text-body text-foreground mb-3">
+                    The Master Key signs almost nothing. Its purpose is to bind all other keys together and certify that they are owned by the same people.
+                  </p>
+                  <div className="bg-muted rounded-lg p-4">
+                    <p className="text-small text-foreground">
+                      Especially long (4096-bit) with special security precautions for the private key and passphrase.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* Key History */}
+            <section>
+              <h2 className="heading-lg mb-6 text-foreground">
+                Previous Key Sets
+              </h2>
+
+              <div className="space-y-4">
+                {keyHistory.map((keySet) => (
+                  <div
+                    key={keySet.year}
+                    className="border border-border rounded-lg overflow-hidden"
+                  >
+                    <button
+                      onClick={() =>
+                        setExpandedYear(
+                          expandedYear === keySet.year ? "" : keySet.year
+                        )
+                      }
+                      className="w-full px-6 py-4 flex items-center justify-between hover:bg-secondary transition-colors duration-150 bg-card"
+                    >
+                      <h3 className="heading-sm text-foreground">
+                        {keySet.year}
+                      </h3>
+                      <span
+                        className={`transition-transform duration-200 ${
+                          expandedYear === keySet.year ? "rotate-180" : ""
+                        }`}
+                      >
+                        ▼
+                      </span>
+                    </button>
+
+                    {expandedYear === keySet.year && (
+                      <div className="px-6 py-4 bg-muted border-t border-border space-y-4">
+                        {keySet.keys.map((key) => (
+                          <div key={key.keyId} className="space-y-2">
+                            <h4 className="heading-sm text-foreground">
+                              {key.name}
+                            </h4>
+                            <div className="text-small space-y-1">
+                              <p className="text-foreground">
+                                <span className="text-muted-foreground">
+                                  Type:{" "}
+                                </span>
+                                {key.type}
+                              </p>
+                              <p className="text-foreground">
+                                <span className="text-muted-foreground">
+                                  Key ID:{" "}
+                                </span>
+                                <code className="bg-background px-2 py-1 rounded">
+                                  {key.keyId}
+                                </code>
+                              </p>
+                              <p className="text-foreground">
+                                <span className="text-muted-foreground">
+                                  Fingerprint:{" "}
+                                </span>
+                              </p>
+                              <p className="text-foreground font-mono bg-background p-2 rounded break-all">
+                                {key.fingerprint}
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Note */}
+            <div className="bg-primary/5 border border-primary/20 rounded-lg p-6">
+              <p className="text-small text-foreground">
+                <strong>Note:</strong> For complete information about key rollover and historical keys, visit the{" "}
+                <a
+                  href="https://www.chiark.greenend.org.uk/~sgtatham/putty/keys.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary hover:underline"
+                >
+                  full Keys page
+                </a>
+                .
+              </p>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <Footer />
+    </div>
+  );
+}

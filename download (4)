@@ -1,0 +1,172 @@
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import { Users, Code2, Mail, BookOpen } from "lucide-react";
+
+interface TeamMember {
+  name: string;
+  role: string;
+  description: string;
+  icon: React.ReactNode;
+}
+
+const teamMembers: TeamMember[] = [
+  {
+    name: "Simon Tatham",
+    role: "Project Originator & Main Developer",
+    description:
+      "Project originator, main developer and benevolent dictator. Wrote the majority of the code and does the majority of new development and features. Also maintains Halibut, the documentation system used to produce the Windows Help file and the HTML manual.",
+    icon: <Code2 className="w-6 h-6" />,
+  },
+  {
+    name: "Alexandra Lanes",
+    role: "Build & Operations",
+    description:
+      "Looks after the nightly snapshot builds and answers mail. Provider of common sense. Programmer, cardboard and sometimes real.",
+    icon: <Mail className="w-6 h-6" />,
+  },
+  {
+    name: "Ben Harris",
+    role: "Macintosh Port & Documentation",
+    description:
+      "Did a lot of the early work on the (still unfinished) Macintosh port and is reputed to understand ISO 2022. Also the maintainer of an enormous concordance of escape sequences and of NetBSD/acorn26.",
+    icon: <BookOpen className="w-6 h-6" />,
+  },
+  {
+    name: "Jacob Nevins",
+    role: "Community & Development",
+    description:
+      "Answers mail, herds wishlist, and occasionally writes code.",
+    icon: <Users className="w-6 h-6" />,
+  },
+];
+
+export default function Team() {
+  return (
+    <div className="min-h-screen flex flex-col bg-background">
+      <Header />
+
+      <main className="flex-1">
+        {/* Hero Section */}
+        <section className="bg-gradient-to-b from-primary/5 to-transparent py-12 md:py-16">
+          <div className="container">
+            <div className="max-w-3xl">
+              <h1 className="heading-display mb-4 text-foreground">
+                PuTTY Team
+              </h1>
+              <p className="text-lg text-muted-foreground">
+                Meet the people behind PuTTY
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Main Content */}
+        <div className="container py-12">
+          <div className="max-w-4xl space-y-12">
+            {/* Overview */}
+            <section>
+              <h2 className="heading-lg mb-6 text-foreground flex items-center gap-3">
+                <Users className="w-8 h-8 text-primary" />
+                About the Team
+              </h2>
+              <div className="bg-card border border-border rounded-lg p-6">
+                <p className="text-body text-foreground">
+                  PuTTY is maintained by a small team based in Cambridge, England. Between us, we handle writing PuTTY, updating its Web site, recording its bugs, and reading (and often responding to) messages to the PuTTY contact e-mail address.
+                </p>
+              </div>
+            </section>
+
+            {/* Team Members */}
+            <section>
+              <h2 className="heading-lg mb-6 text-foreground">
+                Team Members
+              </h2>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {teamMembers.map((member) => (
+                  <div
+                    key={member.name}
+                    className="bg-card border border-border rounded-lg p-6 space-y-4"
+                  >
+                    <div className="flex items-start gap-4">
+                      <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary flex-shrink-0">
+                        {member.icon}
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="heading-sm text-foreground">
+                          {member.name}
+                        </h3>
+                        <p className="text-small text-primary font-semibold">
+                          {member.role}
+                        </p>
+                      </div>
+                    </div>
+
+                    <p className="text-body text-foreground leading-relaxed">
+                      {member.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Contact Section */}
+            <section>
+              <h2 className="heading-lg mb-6 text-foreground">
+                Get in Touch
+              </h2>
+              <div className="bg-primary/5 border border-primary/20 rounded-lg p-6 space-y-4">
+                <p className="text-body text-foreground">
+                  The PuTTY team welcomes feedback, bug reports, and feature requests. If you have something to share with us, please visit the{" "}
+                  <a
+                    href="/feedback"
+                    className="text-primary hover:underline font-medium"
+                  >
+                    Feedback page
+                  </a>{" "}
+                  for detailed information on how to contact us.
+                </p>
+                <p className="text-body text-foreground">
+                  For security-related issues or sensitive information, you can use our Secure Contact Key to send encrypted messages to the team.
+                </p>
+              </div>
+            </section>
+
+            {/* Contributions */}
+            <section>
+              <h2 className="heading-lg mb-6 text-foreground">
+                Acknowledgments
+              </h2>
+              <div className="bg-card border border-border rounded-lg p-6 space-y-4">
+                <p className="text-body text-foreground">
+                  PuTTY has benefited from contributions and support from many people over the years. The project is built on the work of numerous developers, testers, and community members who have helped make PuTTY what it is today.
+                </p>
+                <p className="text-body text-foreground">
+                  Special thanks to all the mirror maintainers around the world who help distribute PuTTY to users everywhere, and to the community members who report bugs, suggest features, and help other users.
+                </p>
+              </div>
+            </section>
+
+            {/* Note */}
+            <div className="bg-primary/5 border border-primary/20 rounded-lg p-6">
+              <p className="text-small text-foreground">
+                <strong>Note:</strong> For more information about the PuTTY team and project history, visit the{" "}
+                <a
+                  href="https://www.chiark.greenend.org.uk/~sgtatham/putty/team.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary hover:underline"
+                >
+                  full Team page
+                </a>
+                .
+              </p>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <Footer />
+    </div>
+  );
+}
