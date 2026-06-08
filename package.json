@@ -2,6 +2,7 @@
   "name": "putty-redesign",
   "private": true,
   "version": "0.0.1",
+  "homepage": "https://suellenmirandasuh.github.io/putty-redesign/",
   "type": "module",
   "scripts": {
     "dev": "vite",

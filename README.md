@@ -8,7 +8,9 @@ Redesign visual do site oficial do [PuTTY](https://www.chiark.greenend.org.uk/~s
 
 Após publicar no GitHub Pages:
 
-**https://suellenmirandassuh.github.io/putty-redesign/**
+**https://suellenmirandasuh.github.io/putty-redesign/**
+
+> Use exatamente esse endereço. O usuário GitHub é `SuellenMirandaSuh` (não `SuellenMirandaSSuh`).
 
 ## Desenvolvimento local
 
@@ -32,8 +34,12 @@ npm run build:gh
 ## Publicação no GitHub Pages
 
 1. Faça push do repositório para o GitHub.
-2. Em **Settings → Pages → Build and deployment**, escolha **GitHub Actions**.
+2. Em **Settings → Pages → Build and deployment**, escolha **GitHub Actions** (só na primeira vez).
 3. O workflow `.github/workflows/deploy.yml` publica automaticamente a cada push na branch `main`.
+
+URL publicada:
+
+**https://suellenmirandasuh.github.io/putty-redesign/**
 
 Ou dispare manualmente em **Actions → Deploy to GitHub Pages → Run workflow**.
 
