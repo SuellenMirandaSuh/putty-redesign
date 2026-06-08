@@ -1,0 +1,477 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD>
+<TITLE>PuTTY Known Bugs and Wish List</TITLE>
+<link rel="canonical" href="https://www.chiark.greenend.org.uk/~sgtatham/putty/wishlist/">
+<link rel="stylesheet" type="text/css" href="../sitestyle.css" title="PuTTY Home Page Style">
+<link rel="shortcut icon" href="putty.ico">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</HEAD>
+<BODY>
+<h1 align=center>PuTTY Known Bugs and Wish List</h1>
+
+
+<p align=center>
+
+<a href="../">Home</a>
+ |
+
+<a href="../faq.html">FAQ</a>
+ |
+
+<a href="../feedback.html">Feedback</a>
+ |
+
+<a href="../licence.html">Licence</a>
+ |
+
+<a href="../maillist.html">Updates</a>
+ |
+
+<a href="../mirrors.html">Mirrors</a>
+ |
+
+<a href="../keys.html">Keys</a>
+ |
+
+<a href="../links.html">Links</a>
+ |
+
+<a href="../team.html">Team</a>
+<br>
+Download:
+
+<a href="../latest.html">Stable</a>
+ &#183;
+
+<a href="../snapshot.html">Snapshot</a>
+ |
+
+<a href="../docs.html">Docs</a>
+ |
+
+<a href="../privacy.html">Privacy</a>
+ |
+
+<a href="../changes.html">Changes</a>
+ |
+
+  <b>Wishlist</b>
+</p>
+
+<p>
+This is the list of bugs that need fixing, and features that want
+adding, to PuTTY. The <a href="#pending">&lsquo;pending&rsquo;</a>
+list represents things that have not been done to the current
+<em>development</em> code; items marked as &lsquo;fixed&rsquo; may not
+yet be in the latest release.
+
+<p>
+If you do not see a feature here, it's also worth checking the
+<a href="../changes.html">Changes page</a>
+before mailing us to ask for the feature; it might already have
+been added.
+
+<p>
+There are other sites tracking bugs and feature requests in
+downstream packages of the Unix port, some of which undoubtedly
+apply to our code:
+<a href="https://packages.qa.debian.org/p/putty.html">Debian</a>,
+Launchpad
+(<a href="https://bugs.launchpad.net/putty">us</a>,
+<a href="https://bugs.launchpad.net/ubuntu/+source/putty">Ubuntu</a>),
+<a href="ftp://ftp.netbsd.org/pub/pkgsrc/current/pkgsrc/security/putty/README.html">NetBSD</a>.
+
+<p>
+Search the wishlist:
+<form method="get" action="https://www.google.com/search">
+<span class="inlineblock">
+<a href="https://www.google.com/"><img src="https://www.google.com/logos/Logo_40wht.gif" border="0" alt="Google"></a>
+</span>
+<span class="inlineblock">
+<input type="hidden" name="hq" value="&#043;&#034;last revision of this bug record&#034;">
+<input type="text" name="q" maxlength="255" value="" class="searchedit">
+<input type="submit" name="btnG" value="Google Search">
+<input type="hidden" name="domains" value="www.chiark.greenend.org.uk"><br>
+<input type="radio" name="sitesearch" value="">WWW
+<input type="radio" name="sitesearch" value="www.chiark.greenend.org.uk" checked>www.chiark.greenend.org.uk<br>
+</span>
+</form>
+
+<p>Here's an index of <a href="cvelist.html">CVE numbers mentioned in
+our wishlist entries.</p>
+<h2><a name="fixed">Recently fixed</a></h2>
+
+<p>
+These are items we believe we have addressed in a recent release.
+Not every change is documented here; see the <a
+href="https://www.chiark.greenend.org.uk/~sgtatham/putty/changes.html">Changes page</a> for further information
+about what was in each release.
+
+<h3><a name="fixed-release-0.84">Fixed in release 0.84</a></h3>
+<ul>
+<li><a name="fixed-vuln-release-0.84">Security vulnerabilities</a>
+<ul>
+<li><b><i><a href="ecdsa-remotely-triggerable-assertion.html">ecdsa-remotely-triggerable-assertion: ECDSA signature verification can be made to fail an assertion</a></i></b>
+<li><b><i><a href="rsakex-double-free.html">rsakex-double-free: Server can provoke a double free in RSA KEX code</a></i></b>
+<li><b><i><a href="telnet-trust-sigil.html">telnet-trust-sigil: Telnet session data is marked with trust sigils after authenticating to a proxy</a></i></b>
+</ul>
+<li><a name="fixed-bug-release-0.84">Bugs (and semi-bugs)</a>
+<ul>
+<li><b><a href="http-proxy-auth-wsaenotconn.html">http-proxy-auth-wsaenotconn: HTTP proxy authentication can fail with &quot;Socket is not connected&quot; on Windows</a></b>
+<li><b><a href="unix-add-host-ca-fails.html">unix-add-host-ca-fails: Unix: unable to add new SSH host certification authority record on fresh installation</a></b>
+<li><a href="eddsa-overlarge-s.html">eddsa-overlarge-s: EdDSA verification accepts signatures with overlarge value of s</a>
+</ul>
+<li><a name="fixed-wish-release-0.84">Wishes</a>
+<ul>
+<li><a href="connection-hook.html">connection-hook: Ability to run an arbitrary command before making network connection</a>
+</ul>
+</ul>
+<h3><a name="fixed-release-0.83">Fixed in release 0.83</a></h3>
+<ul>
+<li><a name="fixed-bug-release-0.83">Bugs (and semi-bugs)</a>
+<ul>
+<li><b><a href="psftp-batch-files-broken.html">psftp-batch-files-broken: PSFTP batch files (-b option) broken on Windows</a></b>
+<li><a href="bare-wm-size-missing-conf-update.html">bare-wm-size-missing-conf-update: Windows: Change Settings didn&#x27;t reflect window resizes from a bare WM_SIZE (e.g. FancyZones)</a>
+<li><a href="empty-answerback-tight-loop.html">empty-answerback-tight-loop: Sending an empty ^E answerback causes a tight loop on the next keypress</a>
+<li><a href="gtk-client-font-default.html">gtk-client-font-default: Default to client-side font in Gtk/Unix builds</a>
+<li><a href="gtk-display-non-x.html">gtk-display-non-x: GTK pterm sets DISPLAY inappropriately under Wayland</a>
+<li><a href="gtk-small-keypad-ub.html">gtk-small-keypad-ub: GTK: nav cluster keys could do nothing or misbehave</a>
+<li><a href="lineedit-ctrlm-ctrlj.html">lineedit-ctrlm-ctrlj: Ctrl-M and Ctrl-J weren&#x27;t equivalent to pressing Return in terminal line editing</a>
+<li><a href="pageant-aborted-decrypt-crash.html">pageant-aborted-decrypt-crash: Pageant crashes if signature request aborted before deferred decryption passphrase is entered</a>
+<li><a href="spurious-app-manifests.html">spurious-app-manifests: Spurious application manifests caused CLI tools to fail on XP</a>
+<li><a href="supdup-tdcrl-line-clear.html">supdup-tdcrl-line-clear: SUPDUP: TDCRL operation should clear the new terminal line</a>
+<li><a href="userpass-state-assertion.html">userpass-state-assertion: term-&gt;userpass_state assertion when restarting a session that timed out in login</a>
+<li><a href="windows-127-char-pathname-limit.html">windows-127-char-pathname-limit: Unicode strings in Windows GUI configuration accidentally limited to 127 characters</a>
+</ul>
+<li><a name="fixed-wish-release-0.83">Wishes</a>
+<ul>
+<li><a href="arm-dit.html">arm-dit: Arm: set PSTATE.DIT flag to protect constant-time cryptography</a>
+<li><a href="filereq-unicode.html">filereq-unicode: Windows: permit Unicode filenames in file requests</a>
+<li><a href="ml-kem.html">ml-kem: Implement the post-quantum ML-KEM key encapsulation method</a>
+</ul>
+</ul>
+<h3><a name="fixed-release-0.82">Fixed in release 0.82</a></h3>
+<ul>
+<li><a name="fixed-bug-release-0.82">Bugs (and semi-bugs)</a>
+<ul>
+<li><a href="maximised-window-border.html">maximised-window-border: Configured window border width ignored when maximised or fullscreen</a>
+<li><a href="rsa-sha2-padding.html">rsa-sha2-padding: RSA signatures using SHA-2 hash lacked required padding</a>
+<li><a href="windows-stdio-prompts.html">windows-stdio-prompts: Send Windows console tools&#x27; prompts directly to the console</a>
+<li><a href="x-bool-settings-ignored.html">x-bool-settings-ignored: Boolean settings specified via X resource / -xrm argument can be ignored</a>
+<li><a href="xterm216-altfn-escape.html">xterm216-altfn-escape: Alt + Fn in Xterm 216+ mode sent an unwanted prefix escape on Windows</a>
+</ul>
+</ul>
+<h3><a name="fixed-release-0.81">Fixed in release 0.81</a></h3>
+<ul>
+<li><a name="fixed-vuln-release-0.81">Security vulnerabilities</a>
+<ul>
+<li><b><i><a href="vuln-p521-bias.html">vuln-p521-bias: NIST P521 private keys are exposed by biased signature generation</a></i></b>
+</ul>
+</ul>
+<h3><a name="fixed-release-0.80">Fixed in release 0.80</a></h3>
+<ul>
+<li><a name="fixed-vuln-release-0.80">Security vulnerabilities</a>
+<ul>
+<li><b><i><a href="vuln-terrapin.html">vuln-terrapin: Mitigations for SSH protocol &#x27;Terrapin&#x27; vulnerability</a></i></b>
+</ul>
+<li><a name="fixed-bug-release-0.80">Bugs (and semi-bugs)</a>
+<ul>
+<li><a href="win-help-not-loaded-in-msi.html">win-help-not-loaded-in-msi: Windows PuTTY as installed by the MSI can&#x27;t find its help file</a>
+</ul>
+</ul>
+<h3><a name="fixed-release-0.79">Fixed in release 0.79</a></h3>
+<ul>
+<li><a name="fixed-bug-release-0.79">Bugs (and semi-bugs)</a>
+<ul>
+<li><b><a href="unix-bell-overload-timing-scale.html">unix-bell-overload-timing-scale: Unix PuTTY misreads/writes bell overload timing settings</a></b>
+<li><b><a href="win-install-scope.html">win-install-scope: PuTTY 0.78 Windows installer misbehaviour</a></b>
+<li><a href="unix-maximised-font-size-assertion-failure.html">unix-maximised-font-size-assertion-failure: GTK PuTTY can fail an assertion on changing the font size while maximised</a>
+<li><a href="unix-resize-assertion-failure.html">unix-resize-assertion-failure: GTK PuTTY can fail an assertion on a server-controlled resize</a>
+<li><a href="win-server-resize-forbidden-hang.html">win-server-resize-forbidden-hang: Windows: hang if server tries to resize window when resizing is forbidden</a>
+<li><a href="wrapping-edge-cases.html">wrapping-edge-cases: Multiple edge-case bugs in terminal line wrapping</a>
+<li><a href="zipfile-missing-chm.html">zipfile-missing-chm: putty.chm help file missing from putty.zip</a>
+</ul>
+<li><a name="fixed-wish-release-0.79">Wishes</a>
+<ul>
+<li><a href="hmac-sha2-512.html">hmac-sha2-512: Support for HMAC-SHA-512 in SSH-2</a>
+<li><a href="mouse-reporting-1003.html">mouse-reporting-1003: Mouse reporting including plain mouse movements (type 1003)</a>
+<li><a href="mouse-reporting-horiz-scroll.html">mouse-reporting-horiz-scroll: Horizontal scroll action support in terminal mouse tracking</a>
+</ul>
+</ul>
+<h2><a name="fixed">Fixed in older releases</a></h2>
+
+<p>See the <a href="historic.html">historic wishlist page</a> for
+information about issues fixed in older releases.
+
+<h2><a name="pending">Outstanding issues</a></h2>
+
+<p>
+These are bugs still to be fixed and features remaining to be
+implemented.
+
+<h3><a name="bugs">Bugs</a></h3>
+
+<p>
+These items are clearly actual problems and we want them fixed.
+<ul>
+<li><b><a href="pscp-size-change.html">pscp-size-change: PSCP assertion failure if remote source file changes size</a></b>
+<li><b><a href="win-jumplist-trouble.html">win-jumplist-trouble: Trouble with Windows &#x27;jump lists&#x27; of recently used sessions since 0.68</a></b>
+<li><b><a href="win11-suspend.html">win11-suspend: Terminal display updates stop happening after resuming from Windows 11 Modern Standby</a></b>
+<li><a href="assert-fail-newsavelines.html">assert-fail-newsavelines: Failed assertion: count234(term-&gt;scrollback) &lt;= newsavelines</a>
+<li><a href="change-scrollback-altscr.html">change-scrollback-altscr: Changing scrollback size when on alternate screen clears the screen</a>
+<li><a href="exit-codes.html">exit-codes: Provide more useful exit codes</a>
+<li><a href="fullscreen-taskbar.html">fullscreen-taskbar: Switching to full-screen doesn&#x27;t always hide taskbar</a>
+<li><a href="keyboard-problems.html">keyboard-problems: Problems with various keyboard layouts / input methods</a>
+<li><a href="pageant-load-fail.html">pageant-load-fail: Pageant -c continues even if key load fails</a>
+<li><a href="pscp-recursion-dest-dir.html">pscp-recursion-dest-dir: PSCP recursive copy to a new directory tries to copy all files over that dir</a>
+<li><a href="puttygen-accel-bogosity.html">puttygen-accel-bogosity: Bogosity with PuTTYgen keyboard accelerators and menu bar</a>
+<li><a href="scrollbar-sub-message-loop.html">scrollbar-sub-message-loop: Dragging the Windows terminal scrollbar blocks handling of many non-GUI events</a>
+<li><a href="ssh2-utf8-strings.html">ssh2-utf8-strings: SSH-2 message strings etc should be in UTF-8</a>
+<li><a href="win-message-loop.html">win-message-loop: Using modal dialog boxes on Windows invokes a substandard message loop</a>
+</ul>
+<h3>Semi-bugs</h3>
+
+<p>
+These are things which might be bugs or might not, depending on your
+precise definition of what a bug is.
+
+<ul>
+<li><b><a href="false-positive-malware.html">false-positive-malware: PuTTY is persistently misreported as malware</a></b>
+<li><b><a href="store-version-unknown.html">store-version-unknown: PuTTY&#x27;s Windows Store entry has &quot;unknown version&quot; according to Intune and Winget </a></b>
+<li><b><a href="store-vs-windows-s.html">store-vs-windows-s: PuTTY&#x27;s Windows Store entry refuses to install in &quot;S mode&quot;</a></b>
+<li><a href="async-dns.html">async-dns: DNS lookups are synchronous.</a>
+<li><a href="da-response.html">da-response: PuTTY&#x27;s response to DA is suboptimal</a>
+<li><a href="fxp-short-reads.html">fxp-short-reads: Support short reads in SFTP</a>
+<li><a href="portfwd-multi.html">portfwd-multi: Port forwarding should cope better with already-used ports</a>
+<li><a href="psftp-speedups.html">psftp-speedups: Further speedups for PSFTP</a>
+<li><a href="pterm-settings.html">pterm-settings: pterm&#x27;s relationship to saved sessions should be clarified</a>
+<li><a href="serial-check-parity.html">serial-check-parity: Serial backends don&#x27;t enable parity checking</a>
+<li><a href="sgr21.html">sgr21: PuTTY&#x27;s interpretation of SGR 21 differs from Linux&#x27;s</a>
+<li><a href="ssh-rportfwd-addr-mismatch.html">ssh-rportfwd-addr-mismatch: Remote port forwarding fails due to address mismatch (Bitvise)</a>
+<li><a href="unicode-select.html">unicode-select: Word-at-a-time selection configuration ignores Unicode</a>
+<li><a href="win-pterm-line-wrap.html">win-pterm-line-wrap: pterm.exe handles line breaks badly on Windows 10</a>
+<li><a href="win7-jumplist-duplicates.html">win7-jumplist-duplicates: Windows &quot;jump list&quot; duplicates items between pinned and recent lists</a>
+</ul>
+<h3>Wishlist</h3>
+
+<p>
+These are things that have been requested by users or which
+seem to me like a good idea. Not all of these are likely to be
+implemented without outside help, and some of them will
+positively never be implemented.
+
+<p>
+Plausible features we hope to get round to adding at some point:
+
+<ul>
+<li>"fun": Just needs tuits, and not many of them.
+<ul>
+<li><a href="auth-pref.html">auth-pref: Preference order for authentications</a>
+<li><a href="autoscroll-accel.html">autoscroll-accel: Auto-scrolling while selecting should have variable speed</a>
+<li><a href="character-line-delay.html">character-line-delay: Configurable per-character and per-line delays</a>
+<li><a href="cmdline-licence.html">cmdline-licence: Command-line tools should have an option to display licence</a>
+<li><a href="cmdline-x-display.html">cmdline-x-display: Command-line option to set local X display</a>
+<li><a href="command-hooks.html">command-hooks: Hooks to run external commands (e.g. after forwarding set up)</a>
+<li><a href="ctrl-pgupdn-config.html">ctrl-pgupdn-config: Ctrl-PgUp and Ctrl-PgDn scrolling should be configurable</a>
+<li><a href="emacs-keys.html">emacs-keys: Emacs cursor-key etc mappings</a>
+<li><a href="handle-unimplemented.html">handle-unimplemented: Handle SSH2_MSG_UNIMPLEMENTED more usefully</a>
+<li><a href="menu-bar.html">menu-bar: Menu bar in the PuTTY window</a>
+<li><a href="meta-bit.html">meta-bit: Option to have Alt key set the meta bit</a>
+<li><a href="multi-font.html">multi-font: Multiple font selections</a>
+<li><a href="pageant-logging.html">pageant-logging: Logging for Pageant</a>
+<li><a href="pageant-wildcard.html">pageant-wildcard: Accept wildcards on Pageant command line</a>
+<li><a href="passthru-default-printer.html">passthru-default-printer: Pass-through printing: option to go with Windows default printer</a>
+<li><a href="proxy-iprange.html">proxy-iprange: Support for IP address ranges (x.x.x.x/y) in proxy exclude list</a>
+<li><a href="pscp-check-first.html">pscp-check-first: PSCP could check source filespec before connecting</a>
+<li><a href="pscp-filemodes.html">pscp-filemodes: Control of file permissions in PSCP and PSFTP</a>
+<li><a href="pscp-stdout.html">pscp-stdout: Make PSCP optionally log to stdout instead of stderr</a>
+<li><a href="psftp-progress.html">psftp-progress: Progress indication for PSFTP</a>
+<li><a href="startup-fullscreen.html">startup-fullscreen: Option to start up in full screen mode</a>
+<li><a href="terminfo.html">terminfo: Maintain a terminfo for PuTTY&#x27;s terminal emulator</a>
+<li><a href="window-title-keywords.html">window-title-keywords: Variable expansion in configured window title</a>
+</ul>
+<li>"tricky": Needs many tuits.
+<ul>
+<li><a href="avoid-msgbox.html">avoid-msgbox: Avoid using message boxes for &quot;connection closed&quot; and friends</a>
+<li><a href="cmdline-any-option.html">cmdline-any-option: Command-line general `-o Name=Value&#x27; type option</a>
+<li><a href="config-inheritance.html">config-inheritance: Inheritance between saved sessions</a>
+<li><a href="config-locations.html">config-locations: Store configuration in disk file, HKEY_ALL_USERS, other locations</a>
+<li><a href="dedicated-sharing-upstream.html">dedicated-sharing-upstream: Separate dedicated utility to act as connection sharing upstream</a>
+<li><a href="do-text-splitting.html">do-text-splitting: Frontends need control over where do_paint() splits runs</a>
+<li><a href="i18n.html">i18n: Framework for internationalisation</a>
+<li><a href="key-mapping.html">key-mapping: Generic key mapping facility</a>
+<li><a href="log-mkdir.html">log-mkdir: Create directories for log files automatically</a>
+<li><a href="many-sessions.html">many-sessions: Make life easier for people with lots of saved sessions</a>
+<li><a href="no-terminal-window.html">no-terminal-window: Ability to run without terminal window (for forwarding etc)</a>
+<li><a href="pageant-key-confirm.html">pageant-key-confirm: Option to require confirmation of key use in Pageant</a>
+<li><a href="pageant-timeout.html">pageant-timeout: Key timeout in Pageant</a>
+<li><a href="port-mac.html">port-mac: Port to Mac OS X</a>
+<li><a href="portable-keyboard.html">portable-keyboard: Shared keyboard handler across platforms</a>
+<li><a href="proxy-logging.html">proxy-logging: Log proxy connection setup etc</a>
+<li><a href="proxy-only-main-connection.html">proxy-only-main-connection: Option to proxy only the main network connection</a>
+<li><a href="reorder-sessions.html">reorder-sessions: Allow frequently used saved sessions to be easy to access</a>
+<li><a href="right-alt.html">right-alt: Support for Right Alt on keyboards which don&#x27;t call it AltGr</a>
+<li><a href="save-scrollback.html">save-scrollback: Allow saving scrollback to a file (logging formatted terminal output)</a>
+<li><a href="search-scrollback.html">search-scrollback: Searching facilities in the scrollback</a>
+<li><a href="sftp-tilde.html">sftp-tilde: Accept home directories as &quot;~&quot; and &quot;~username&quot; in PSCP and PSFTP</a>
+<li><a href="ssh-url-scheme.html">ssh-url-scheme: Support for an &quot;ssh&quot; URL scheme</a>
+<li><a href="status-bar.html">status-bar: Status bar on the PuTTY window</a>
+<li><a href="system-menu.html">system-menu: Expansions to the System menu</a>
+<li><a href="unicode-mappings.html">unicode-mappings: Compatibility mappings for Unicode characters unsupported by a font</a>
+<li><a href="win-enum-serial-ports.html">win-enum-serial-ports: Enumerate serial (&quot;COM&quot;) ports on Windows</a>
+<li><a href="winrt.html">winrt: Port PuTTY to Windows RT (aka Metro)</a>
+</ul>
+</ul>
+<p>
+Features we're not sure about, or which probably won't get added
+unless someone else does the hard work:
+
+<ul>
+<li>"fun": Just needs tuits, and not many of them.
+<ul>
+<li><a href="border-colour.html">border-colour: Ability to configure border colour, when present</a>
+<li><a href="cmdline-edit-session.html">cmdline-edit-session: Command-line option to edit a session rather than launching it</a>
+<li><a href="cmdline-environ.html">cmdline-environ: Command line stored in environment variable</a>
+<li><a href="emulate-3-buttons.html">emulate-3-buttons: Make left+right click emulate middle-click, like XFree86</a>
+<li><a href="env-passthrough.html">env-passthrough: Option to pass through certain environment variables</a>
+<li><a href="fore-back.html">fore-back: Specify foreground and background colours separately</a>
+<li><a href="forwarding-unix-sockets-client.html">forwarding-unix-sockets-client: Port-forwarding using Unix-domain sockets on the client</a>
+<li><a href="forwarding-unix-sockets-server.html">forwarding-unix-sockets-server: Port-forwarding using Unix-domain sockets on the server</a>
+<li><a href="function-keys-8bit.html">function-keys-8bit: Option to start key sequences with 0x9B instead of 0x1B</a>
+<li><a href="intel-keyboard.html">intel-keyboard: Keyboard mode to support Intel serial consoles</a>
+<li><a href="pageant-activity-ind.html">pageant-activity-ind: Visual/aural indication of Pageant activity</a>
+<li><a href="pageant-hibernate.html">pageant-hibernate: Discard sensitive material in Pageant on hibernation</a>
+<li><a href="paste-on-release.html">paste-on-release: PuTTY should paste when the paste button is released</a>
+<li><a href="portfwd-range.html">portfwd-range: Allow port ranges in tunnel UI</a>
+<li><a href="psftp-paging.html">psftp-paging: Paging on PSFTP directory listings</a>
+<li><a href="psftp-prompt.html">psftp-prompt: PSFTP should have a &quot;prompt&quot; command</a>
+<li><a href="reconnect-auto.html">reconnect-auto: Reconnect automatically if connection goes down</a>
+<li><a href="sel-colours.html">sel-colours: Make selection colours configurable</a>
+<li><a href="sgr-as-colours.html">sgr-as-colours: Be able to change text colour or font in response to SGR Bold, Underline etc</a>
+<li><a href="ssh2-openssh-certkey-fallback.html">ssh2-openssh-certkey-fallback: Automatic fallback from certified to uncertified SSH keys during userauth</a>
+<li><a href="ssh2-openssh-certkey-fallback-pageant.html">ssh2-openssh-certkey-fallback-pageant: Pageant could automatically add the uncertified version when loading a certified SSH key</a>
+<li><a href="term-reset-title.html">term-reset-title: Perhaps terminal resets should reset window title(s)</a>
+<li><a href="triple-click-wrap.html">triple-click-wrap: Perhaps triple-click select should take account of wrapped lines</a>
+<li><a href="two-way-keepalives.html">two-way-keepalives: An alternative form of keepalive which is two-way</a>
+<li><a href="vt-utf8-keyboard.html">vt-utf8-keyboard: Keyboard mode to support Microsoft standard serial consoles</a>
+<li><a href="xterm-keyboard.html">xterm-keyboard: Better xterm keyboard compatibility</a>
+</ul>
+<li>"tricky": Needs many tuits.
+<ul>
+<li><a href="colour-scheme.html">colour-scheme: Predefined colour schemes</a>
+<li><a href="cooked-printer.html">cooked-printer: Feature-rich printer support with formatting control</a>
+<li><a href="dll-frontend.html">dll-frontend: SSH client packaged as a DLL for use in other programs</a>
+<li><a href="drag-drop.html">drag-drop: Drag and drop support</a>
+<li><a href="gui-auth.html">gui-auth: Option to use GUI dialogs for authentication</a>
+<li><a href="gui-sftp.html">gui-sftp: A GUI client for SFTP</a>
+<li><a href="horiz-scroll.html">horiz-scroll: Horizontal scrollbar</a>
+<li><a href="http-proxy-server.html">http-proxy-server: Present HTTP proxy interface to dynamic port forwarding</a>
+<li><a href="idn.html">idn: Support for Internationalized Domain Names (IDNs)</a>
+<li><a href="ip-tos.html">ip-tos: Use of IP type-of-service field</a>
+<li><a href="key-formats-natively.html">key-formats-natively: Ability to use OpenSSH and ssh.com SSH-2 private keys directly (without first converting with PuTTYgen)</a>
+<li><a href="keyboard-copy.html">keyboard-copy: Should be able to copy to clipboard without mouse</a>
+<li><a href="log-timestamp.html">log-timestamp: Timestamps in logs</a>
+<li><a href="mdpi.html">mdpi: The mythical DLL Plugin Interface</a>
+<li><a href="multiple-connections.html">multiple-connections: Managing multiple connections in one PuTTY (eg. tabbed windows, MDI)</a>
+<li><a href="pageant-unix-either-or.html">pageant-unix-either-or: Agnostic agent/client mode in Unix Pageant</a>
+<li><a href="pageant-wayland.html">pageant-wayland: Unix Pageant should support GUI session lifetime on Wayland</a>
+<li><a href="paste-fidelity.html">paste-fidelity: Extra fidelity in copy and paste operations</a>
+<li><a href="plink-background.html">plink-background: Plink option to background after authentication</a>
+<li><a href="portfwd-dynamic-remote.html">portfwd-dynamic-remote: Remote-to-local SOCKS-based dynamic port forwarding</a>
+<li><a href="print-screen.html">print-screen: &quot;Print screen&quot; and similar functions</a>
+<li><a href="pscp-multi-remote-src.html">pscp-multi-remote-src: Perhaps PSCP should permit multiple remote sources</a>
+<li><a href="pscp-restart.html">pscp-restart: Restart capability in PSCP</a>
+<li><a href="psftp-remget.html">psftp-remget: Restart multiple-file operations in PSFTP</a>
+<li><a href="putty-screen-frontend.html">putty-screen-frontend: screen(1) front-end</a>
+<li><a href="puttygen-batch.html">puttygen-batch: Batch mode for Windows PuTTYgen</a>
+<li><a href="regexp-logging.html">regexp-logging: Selective logging based on regular expressions</a>
+<li><a href="rsh-backend.html">rsh-backend: rsh and rexec backends</a>
+<li><a href="scripting.html">scripting: Scripting support in PuTTY</a>
+<li><a href="scrollbar-left.html">scrollbar-left: Scroll bar on the left of the PuTTY window</a>
+<li><a href="session-icon.html">session-icon: Custom, per-session configurable icons</a>
+<li><a href="sshfp-dns.html">sshfp-dns: Support for host key fingerprints in DNS</a>
+<li><a href="subsystem-publickey.html">subsystem-publickey: Support for public key distribution subsystem `publickey&#x27;</a>
+<li><a href="toolbar.html">toolbar: Toolbar on the PuTTY window</a>
+<li><a href="typographical-metrics.html">typographical-metrics: Make PuTTY use the typographical metrics in TrueType fonts</a>
+<li><a href="unicode-normalisation.html">unicode-normalisation: Apply Unicode normalisation to combining characters</a>
+<li><a href="unix-persistent-bell.html">unix-persistent-bell: Persistent bell indication on Unix</a>
+<li><a href="url-launching.html">url-launching: Launch URLs displayed in the PuTTY window by clicking on them</a>
+<li><a href="zmodem.html">zmodem: File transfers using Zmodem</a>
+</ul>
+<li>"taxing": Needs external things we don&#x27;t have (standards, users etc)
+<ul>
+<li><a href="fido2.html">fido2: Support for U2F / FIDO2 security keys via &#x27;sk-foo@openssh.com&#x27; public-key types</a>
+<li><a href="function-keys.html">function-keys: Function and other special keys don&#x27;t do what people want</a>
+<li><a href="modified-fkeys.html">modified-fkeys: Unique codes for modified function/special keys</a>
+<li><a href="mosh.html">mosh: Compatibility with Mosh (mobile shell)</a>
+<li><a href="pageant-forwarding-path.html">pageant-forwarding-path: Track and use the agent-forwarding path in Pageant</a>
+<li><a href="sco-ansi.html">sco-ansi: Support for `SCO ANSI&#x27; terminal features</a>
+<li><a href="smartcard-auth.html">smartcard-auth: PuTTY could use RSA keys held on smartcards</a>
+</ul>
+<li>"mayhem": Probably impossible
+<ul>
+<li><a href="drag-drop-to-cwd.html">drag-drop-to-cwd: Drag and drop support (the hard version)</a>
+<li><a href="moon-on-stick.html">moon-on-stick: The Moon, on a stick</a>
+</ul>
+</ul>
+<h4>Non-wish list</h4>
+
+<p>
+These are features we are actively opposed to seeing in PuTTY. Don't
+bother writing them and sending them to us! If you think you have a
+good argument why they would be good, feel free to plead for them, but
+generally I'll already have a good reason not to do them.
+
+<ul>
+<li><a href="accept-host-keys.html">accept-host-keys: An option to accept all SSH host keys</a>
+<li><a href="banner-escape-codes.html">banner-escape-codes: Interpret escape codes in pre-login banner</a>
+<li><a href="compress-binaries.html">compress-binaries: Compress shipped PuTTY binaries with a tool such as UPX</a>
+<li><a href="control-window-pos.html">control-window-pos: Remember window position, or allow it to be configured</a>
+<li><a href="inhibit-close.html">inhibit-close: Ability to remove close box from window</a>
+<li><a href="locking-settings.html">locking-settings: Ability to lock settings against user changes</a>
+<li><a href="mud-client.html">mud-client: MUD-client-like features (separate input window, etc)</a>
+<li><a href="osc.html">osc: Escape sequence to execute command on the client side</a>
+<li><a href="osc8.html">osc8: Support for the OSC 8 control sequence to associate cells of the terminal with an unrelated URL</a>
+<li><a href="pageant-as-service.html">pageant-as-service: Ability to run Pageant as a Windows Service in NT/2000/etc</a>
+<li><a href="plink-terminal.html">plink-terminal: Terminal emulation in Plink</a>
+<li><a href="port-knocking.html">port-knocking: Port knocking</a>
+<li><a href="reconnect-remember-password.html">reconnect-remember-password: Remember entered password for reconnecting a dead session</a>
+<li><a href="remember-password.html">remember-password: Ability to store password in settings</a>
+<li><a href="sftp-as-drive.html">sftp-as-drive: Present SFTP as a mapped drive or file system</a>
+<li><a href="system-tray.html">system-tray: Use of the System tray</a>
+<li><a href="terminal-emulations.html">terminal-emulations: Terminal emulations other than xterm/ECMA-48 (e.g. 3270)</a>
+<li><a href="terminal-fanout.html">terminal-fanout: Send keyboard input to multiple active sessions</a>
+<li><a href="transparency.html">transparency: Transparent or translucent PuTTY window</a>
+<li><a href="tun-openssh.html">tun-openssh: OpenSSH-compatible tun VPN support</a>
+</ul>
+<h2>Unclassified</h2>
+
+<p>
+Usually items we don't know enough about, or haven't yet thought about
+enough, to fully classify.
+
+<ul>
+<li><a href="cipher-selection.html">cipher-selection: Cipher selection UI is messy and irrational</a>
+<li><a href="foundry-ignore-bug.html">foundry-ignore-bug: Foundry Networks 1.2.27 port has SSH_MSG_IGNORE bug</a>
+<li><a href="fullscreen-menu-corner.html">fullscreen-menu-corner: Use other corners for menu in full-screen mode</a>
+<li><a href="host-key-rollover.html">host-key-rollover: Host key/algorithm rollover not well supported</a>
+<li><a href="psftp-batch-interact.html">psftp-batch-interact: PSFTP: continue interactively after a batch script</a>
+<li><a href="ssh2-romsshell-badstringlen.html">ssh2-romsshell-badstringlen: Embedded RomSShell server closes connection with &quot;Bad string Length&quot;</a>
+<li><a href="virtuallock.html">virtuallock: Use of VirtualLock() on Windows for sensitive material</a>
+</ul>
+<h2><a name="historic">Historic issues</a></h2>
+
+<p>
+Here's a link to a subpage of <a href="historic.html">historic
+issues</a>, which probably aren't interesting any more unless
+you're doing archaeology.
+
+
+
+<p><hr>
+If you want to comment on this web site, see the
+<a href="../feedback.html">Feedback page</a>.
+<br>
+
+(last modified on <!--LASTMOD-->Fri May 22 11:25:19 2026<!--END-->)
+</BODY></HTML>

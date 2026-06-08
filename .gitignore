@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+
+# Build
+dist/
+tsconfig.tsbuildinfo
+
+# Legacy scrambled files (not needed for the app)
+_legacy/
+
+# Environment
+.env
+.env.*
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.log
+
+# IDE
+.vscode/
+.idea/

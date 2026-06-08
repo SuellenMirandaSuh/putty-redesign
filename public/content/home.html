@@ -1,0 +1,193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+
+<HEAD>
+    <TITLE>PuTTY: a free SSH and Telnet client</TITLE>
+    <link rel="canonical" href="https://www.chiark.greenend.org.uk/~sgtatham/putty/">
+    <link rel="stylesheet" type="text/css" href="sitestyle.css" title="PuTTY Home Page Style">
+    <link rel="shortcut icon" href="putty.ico">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</HEAD>
+
+<BODY>
+    <h1 align=center>PuTTY: a free SSH and Telnet client</h1>
+
+
+    <p align=center>
+
+        <b>Home</b> |
+
+        <a href="faq.html">FAQ</a> |
+
+        <a href="feedback.html">Feedback</a> |
+
+        <a href="licence.html">Licence</a> |
+
+        <a href="maillist.html">Updates</a> |
+
+        <a href="mirrors.html">Mirrors</a> |
+
+        <a href="keys.html">Keys</a> |
+
+        <a href="links.html">Links</a> |
+
+        <a href="team.html">Team</a>
+        <br> Download:
+
+        <a href="latest.html">Stable</a> &#183;
+
+        <a href="snapshot.html">Snapshot</a> |
+
+        <a href="docs.html">Docs</a> |
+
+        <a href="privacy.html">Privacy</a> |
+
+        <a href="changes.html">Changes</a> |
+
+        <a href="wishlist/">Wishlist</a>
+    </p>
+
+    <p>
+        PuTTY is a free implementation of SSH and Telnet for Windows and Unix platforms, along with an <code>xterm</code> terminal emulator. It is written and maintained primarily by
+        <a href="https://www.chiark.greenend.org.uk/~sgtatham/">Simon Tatham</a>.
+
+        <p>
+            The latest version is 0.84.
+            <a href="latest.html"><b>Download it here</b></a>.
+
+            <p><b>LEGAL WARNING</b>: Use of PuTTY, PSCP, PSFTP and Plink is illegal in countries where encryption is outlawed. We believe it is legal to use PuTTY, PSCP, PSFTP and Plink in England and Wales and in many other countries, but we are not lawyers,
+                and so if in doubt you should seek legal advice before downloading it. You may find useful information at
+                <a href="http://www.cryptolaw.org/">cryptolaw.org</a>, which collects information on cryptography laws in many countries, but we can't vouch for its correctness.
+            </p>
+
+            <p>
+                Use of the Telnet-only binary (PuTTYtel) is unrestricted by any cryptography laws.
+
+
+
+                <h2>Latest news</h2>
+
+                <p>
+                    <b>2026-05-22 PuTTY 0.84 released</b>
+
+
+                    <p>
+                        PuTTY 0.84, released today, fixes multiple security issues (minor as far as we know), several bugs, and has the new features of running a pre-connection command and (on Unix) displaying partially composed Unicode characters as you type them.
+
+
+                        <p>
+                            <b>2025-08-14 New website, <code>putty.software</code></b>
+
+
+                            <p>
+                                We have a new domain name for the PuTTY website!
+                                <p>
+                                    <a href="https://putty.software/">putty.software</a> is now a nice, short, easy-to-remember location that you can type into a browser from memory.
+                                    <p>
+                                        At present it only contains a small landing page, which will redirect you back to the main site here on chiark. In future we plan to move the whole website to the new domain.
+                                        <p>
+                                            Unlike other landing pages, this one is run by the PuTTY team itself, and not by a third party with their own agenda.
+
+
+                                            <p>
+                                                <b>2025-02-08 PuTTY 0.83 released</b>
+
+
+                                                <p>
+                                                    PuTTY 0.83, released today, adds support for a second post-quantum key exchange algorithm (ML-KEM), and has many fixes for bugs in 0.82.
+
+
+                                                    <p>
+                                                        <b>2024-11-27 PuTTY 0.82 released</b>
+
+
+                                                        <p>
+                                                            PuTTY 0.82, released today, improves Unicode support. Usernames and passwords read from the terminal or the Windows console now support full Unicode, so that you can use characters outside the Windows system code page, or the character set configured
+                                                            in PuTTY. The same is true for usernames and file names provided via the PuTTY tools' command line and via the GUI. (However, unfortunately not yet if you save and reload a session.)
+
+
+                                                            <p>
+                                                                <b>2024-04-15 PuTTY 0.81 released</b>
+
+
+                                                                <p>
+                                                                    PuTTY 0.81, released today, fixes a <strong>critical vulnerability</strong> <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-31497">CVE-2024-31497</a> in the use of 521-bit
+                                                                    ECDSA keys (<code>ecdsa-sha2-nistp521</code>). If you have used a 521-bit ECDSA private key with any previous version of PuTTY, <strong>consider the private key compromised</strong>:
+                                                                    remove the public key from <code>authorized_keys</code> files, and generate a new key pair.
+                                                                    <p>
+                                                                        However, this <em>only</em> affects that one algorithm and key size. No other size of ECDSA key is affected, and no other key type is affected.
+
+
+                                                                        <p>
+                                                                            <b>2023-12-18 PuTTY 0.80 released</b>
+
+
+                                                                            <p>
+                                                                                PuTTY 0.80, released today, includes a fix for the <a href="https://terrapin-attack.com">Terrapin vulnerability</a> in some SSH protocol extensions (aka CVE-2023-48795). The
+                                                                                issue also needs patching in the server.
+
+
+                                                                                <p>
+                                                                                    <b>2023-08-26 PuTTY 0.79 released</b>
+
+
+                                                                                    <p>
+                                                                                        PuTTY 0.79, released today, is mostly a bug fix release, with only minor new features in SSH and terminal mouse handling.
+                                                                                        <p>
+                                                                                            The most important bug fix is that we've restored the Windows 'install scope' to the way it was in 0.77 and earlier, reverting the security workaround we had to put into 0.78. This means the 0.79 Windows installer will <em>not</em>                                                                                            uninstall 0.78 automatically, so we recommend uninstalling 0.78 by hand first, if you have it installed. As before, if you've ended up with both versions installed,
+                                                                                            uninstalling them both and then running the new installer will put everything right.
+
+
+                                                                                            <p>
+                                                                                                <b>2023-07-31 GPG key rollover</b>
+
+
+                                                                                                <p>
+                                                                                                    We've generated a fresh set of GPG keys for signing PuTTY release and snapshot builds, since the old ones were due to expire. We will begin signing snapshots with the new snapshot key, and future releases with the new release key. For continuity, the
+                                                                                                    new master key is signed with the old master key. See the
+                                                                                                    <a href="keys.html">keys page</a> for more information.
+
+
+
+
+                                                                                                    <h2>Site map</h2>
+
+                                                                                                    <ul>
+                                                                                                        <li>
+                                                                                                            <a href="licence.html">Licence conditions</a> under which you may use PuTTY.
+                                                                                                            <li>
+                                                                                                                <a href="faq.html">The FAQ</a>.
+                                                                                                                <li>
+                                                                                                                    <a href="docs.html">The documentation</a>.
+                                                                                                                    <li>
+                                                                                                                        Download PuTTY:
+                                                                                                                        <ul>
+                                                                                                                            <li><a href="latest.html">latest release</a> 0.84
+                                                                                                                                <li><a href="snapshot.html">development snapshots</a>
+                                                                                                                        </ul>
+                                                                                                                        <br>
+                                                                                                                        <li>
+                                                                                                                            Subscribe to the <a href="maillist.html">PuTTY-announce</a> mailing list to be notified of new releases.
+                                                                                                                            <li>
+                                                                                                                                <a href="feedback.html">Feedback</a> and bug reporting: contact address and guidelines. <em>Please</em> read the guidelines
+                                                                                                                                before sending us mail; we get a very large amount of mail and it will help us answer you more quickly.
+                                                                                                                                <li>
+                                                                                                                                    <a href="changes.html">Changes in recent releases</a>.
+                                                                                                                                    <li>
+                                                                                                                                        <a href="wishlist/">Wish list</a> and list of known bugs.
+                                                                                                                                        <li>
+                                                                                                                                            <a href="links.html">Links</a> to related software and specifications elsewhere.
+                                                                                                                                            <li>
+                                                                                                                                                A page about the PuTTY <a href="team.html">team members</a>.
+                                                                                                    </ul>
+
+
+                                                                                                    <p>
+                                                                                                        <hr> If you want to comment on this web site, see the
+                                                                                                        <a href="feedback.html">Feedback page</a>.
+                                                                                                        <br> (last modified on
+                                                                                                        <!--LASTMOD-->Fri May 22 11:25:18 2026
+                                                                                                        <!--END-->)
+</BODY>
+
+</HTML>
